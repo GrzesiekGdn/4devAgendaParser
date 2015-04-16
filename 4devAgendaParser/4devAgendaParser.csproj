@@ -40,6 +40,9 @@
     <Compile Include="ForDevWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\TermPoint.cs" />
+    <Compile Include="Model\Track.cs" />
+    <Compile Include="Parsers\TermPointParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

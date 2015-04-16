@@ -2,42 +2,30 @@ namespace _4devAgendaParser
 {
     using System;
     using System.Diagnostics;
+    using System.Linq;
     using System.Net;
     using System.Text;
-    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
-    using System.Web;
+
+    using _4devAgendaParser.Parsers;
 
     public class ForDevWorker
     {
-        private readonly Regex regex =
-            new Regex(
-                "<div class=\"agenda-term-point\\s+track-(?<TrackId>\\d+)"
-                + "[.\\s\\w\"=\\-><]*?<span class=\"point-title\"><a href=\"(?<TitleLink>.*)\">"
-                + "(?<Title>.*)</a></span>(<br/>)*(\\s*<span class=\"point-speaker\">\\s*"
-                + "(?<Speaker>.*)[\\s()\\w]*</span><br/>)*\\s*",
-                RegexOptions.Compiled | RegexOptions.Multiline);
+        private readonly TermPointParser termPointParser = new TermPointParser();
 
         public async Task Load()
         {
             var stopwatch = Stopwatch.StartNew();
 
             var page = await this.Load("http://4developers.org.pl/pl/agenda/agenda/");
-            var matches = this.regex.Matches(page);
+            var termPoints = this.termPointParser.Parse(page).ToList();
 
-            int count = 0;
-
-            foreach (Match match in matches)
+            foreach (var termPoint in termPoints)
             {
-                Console.WriteLine(
-                    "TrackId: {0}\n\tTitle: {1}\n\tSpeaker: {2}\n",
-                    match.Groups["TrackId"].Value,
-                    HttpUtility.HtmlDecode(match.Groups["Title"].Value),
-                    match.Groups["Speaker"].Value);
-
-                count++;
+                Console.WriteLine("Title: {0}", termPoint.Title);
             }
 
+            var count = termPoints.Count();
             Console.WriteLine("\nLoaded {0} items, by {1} miliseconds", count, stopwatch.ElapsedMilliseconds);
         }
 
