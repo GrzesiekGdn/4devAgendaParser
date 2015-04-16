@@ -38,6 +38,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForDevWorker.cs" />
+    <Compile Include="Model\TermTime.cs" />
+    <Compile Include="Parsers\TermTimeParser.cs" />
+    <Compile Include="Parsers\TrackParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\TermPoint.cs" />
