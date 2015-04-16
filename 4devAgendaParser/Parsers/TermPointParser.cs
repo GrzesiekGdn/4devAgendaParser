@@ -13,7 +13,7 @@ namespace _4devAgendaParser.Parsers
         private readonly Regex regex =
             new Regex(
                 "<div class=\"agenda-term-point\\s+track-(?<TrackId>\\d+)"
-                + "[.\\s\\w\"=\\-><]*?<span class=\"point-title\"><a href=\"(?<TitleLink>.*)\">"
+                + "[.\\s\\w\"=\\-><:;]*?<span class=\"point-title\"><a href=\"(?<TitleLink>.*)\">"
                 + "(?<Title>.*)</a></span>(<br/>)*(\\s*<span class=\"point-speaker\">\\s*"
                 + "(?<Speaker>.*)[\\s()\\w]*</span><br/>)*\\s*",
                 RegexOptions.Compiled | RegexOptions.Multiline);
