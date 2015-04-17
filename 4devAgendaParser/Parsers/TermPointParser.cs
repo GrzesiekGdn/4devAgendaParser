@@ -30,7 +30,8 @@ namespace _4devAgendaParser.Parsers
                             {
                                 TrackId = Int32.Parse(match.Groups["TrackId"].Value),
                                 Title = HttpUtility.HtmlDecode(match.Groups["Title"].Value),
-                                Speaker = match.Groups["Speaker"].Value
+                                Speaker = match.Groups["Speaker"].Value,
+                                TitleLink = match.Groups["TitleLink"].Value
                             })).ToList();
         }
     }

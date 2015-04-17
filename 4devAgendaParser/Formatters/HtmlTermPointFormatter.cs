@@ -8,6 +8,13 @@ namespace _4devAgendaParser.Formatters
 
     public class HtmlTermPointFormatter : ITermPointFormatter
     {
+        private readonly string baseAddress;
+
+        public HtmlTermPointFormatter(string baseAddress)
+        {
+            this.baseAddress = baseAddress;
+        }
+
         public string Format(IList<TermPoint> termPoints, IList<TermTime> termTimes, IList<Track> tracks)
         {
             var builder = new StringBuilder();
@@ -26,8 +33,16 @@ namespace _4devAgendaParser.Formatters
             builder.AppendLine("<head>");
             builder.AppendLine("<meta charset=\"UTF-8\">");
             builder.AppendLine("<title>Agenda 4developers 2015</title>");
+            
+            builder.AppendLine("<style>");
+            builder.AppendLine("table {border-collapse: collapse;}");
+            builder.AppendLine("table, th, td {border: 1px solid lightgray;padding: 5px;}");
+            builder.AppendLine("</style>");
+
             builder.AppendLine("</head>");
             builder.AppendLine("<body>");
+
+            builder.AppendLine("<h3>Agenda 4developers 2015</h3>");
         }
 
         private void AppendDocumentFooter(StringBuilder builder)
@@ -85,7 +100,9 @@ namespace _4devAgendaParser.Formatters
             {
                 var currentPoint = points.FirstOrDefault(p => p.Track == track);
                 var currentTitle = currentPoint != null ? currentPoint.Title : " - ";
-                builder.AppendFormat("<th>{0}</th>\n", currentTitle);
+                var currentLink = currentPoint != null ? this.baseAddress + currentPoint.TitleLink : null;
+
+                builder.AppendFormat("<th><a href=\"{1}\">{0}</a></th>\n", currentTitle, currentLink);
             }
 
             builder.AppendLine("</tr>");

@@ -21,7 +21,7 @@ namespace _4devAgendaParser.Logic
                         new
                             {
                                 Track = tracks.First(t => t.TrackId == g.Key),
-                                Items = g.Select((t, i) => new { TermIndex = i, t.Title, t.Speaker })
+                                Items = g.Select((t, i) => new { TermIndex = i, t.Title, t.Speaker, t.TitleLink })
                             })
                     .ToList();
 
@@ -36,7 +36,8 @@ namespace _4devAgendaParser.Logic
                                 TermTime =
                                     i.TermIndex < termTimesArray.Count() ? termTimesArray[i.TermIndex] : null,
                                 Title = i.Title,
-                                Speaker = i.Speaker
+                                Speaker = i.Speaker,
+                                TitleLink = i.TitleLink
                             }));
 
             return result;

@@ -18,7 +18,7 @@ namespace _4devAgendaParser.Logic
                 new TermTimeParser(),
                 new TermPointParser(),
                 new TrackAssembler(),
-                new HtmlTermPointFormatter());
+                new HtmlTermPointFormatter("http://4developers.org.pl"));
         }
     }
 }
