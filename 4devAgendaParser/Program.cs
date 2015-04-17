@@ -2,12 +2,16 @@
 {
     using System;
 
+    using _4devAgendaParser.Logic;
+
     internal class Program
     {
         private static void Main()
         {
-            var worker = new ForDevWorker();
-            worker.Load().Wait();
+            var factory = new ForDevWorkerFactory();
+            var worker = factory.Create();
+
+            worker.Load();
 
             Console.WriteLine("Wpisz cokolwiek by zakończyć!");
             Console.Read();

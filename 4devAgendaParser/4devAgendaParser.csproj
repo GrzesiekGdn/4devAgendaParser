@@ -37,7 +37,10 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ForDevWorker.cs" />
+    <Compile Include="Logic\DataLoader.cs" />
+    <Compile Include="Logic\ForDevWorker.cs" />
+    <Compile Include="Logic\ForDevWorkerFactory.cs" />
+    <Compile Include="Logic\ITermPointFormatter.cs" />
     <Compile Include="Model\TermPoint.cs" />
     <Compile Include="Model\TermTime.cs" />
     <Compile Include="Parsers\TermTimeParser.cs" />
@@ -48,7 +51,7 @@
     <Compile Include="Model\Track.cs" />
     <Compile Include="Parsers\TermPointParser.cs" />
     <Compile Include="Logic\TrackAssembler.cs" />
-    <Compile Include="Logic\TermPointFormatter.cs" />
+    <Compile Include="Logic\SimpleTextTermPointFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

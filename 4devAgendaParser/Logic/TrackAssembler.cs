@@ -1,4 +1,4 @@
-namespace _4devAgendaParser
+namespace _4devAgendaParser.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
