@@ -37,12 +37,13 @@ namespace _4devAgendaParser.Formatters
             builder.AppendLine("<style>");
             builder.AppendLine("table {border-collapse: collapse;}");
             builder.AppendLine("table, th, td {border: 1px solid lightgray;padding: 5px;}");
+            builder.AppendLine("tbody tr th {font-size:75%}");
             builder.AppendLine("</style>");
 
             builder.AppendLine("</head>");
             builder.AppendLine("<body>");
 
-            builder.AppendLine("<h3>Agenda 4developers 2015</h3>");
+            builder.AppendLine("<h2>Agenda 4developers 2015</h2>");
         }
 
         private void AppendDocumentFooter(StringBuilder builder)
@@ -99,10 +100,17 @@ namespace _4devAgendaParser.Formatters
             foreach (var track in tracks)
             {
                 var currentPoint = points.FirstOrDefault(p => p.Track == track);
-                var currentTitle = currentPoint != null ? currentPoint.Title : " - ";
-                var currentLink = currentPoint != null ? this.baseAddress + currentPoint.TitleLink : null;
+                if (currentPoint != null)
+                {
+                    var currentTitle = currentPoint.Title;
+                    var currentLink = this.baseAddress + currentPoint.TitleLink;
 
-                builder.AppendFormat("<th><a href=\"{1}\">{0}</a></th>\n", currentTitle, currentLink);
+                    builder.AppendFormat("<th><a href=\"{1}\">{0}</a></th>\n", currentTitle, currentLink);
+                }
+                else
+                {
+                    builder.AppendLine("<th></th>");
+                }
             }
 
             builder.AppendLine("</tr>");
