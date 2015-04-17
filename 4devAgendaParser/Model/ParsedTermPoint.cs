@@ -1,9 +1,8 @@
 namespace _4devAgendaParser.Model
 {
-    public class TermPoint
+    public class ParsedTermPoint
     {
-        public TermTime TermTime { get; set; }
-        public Track Track { get; set; }
+        public int TrackId { get; set; }
         public string Title { get; set; }
         public string Speaker { get; set; }
     }

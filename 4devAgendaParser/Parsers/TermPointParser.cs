@@ -18,7 +18,7 @@ namespace _4devAgendaParser.Parsers
                 + "(?<Speaker>.*)[\\s()\\w]*</span><br/>)*\\s*",
                 RegexOptions.Compiled | RegexOptions.Multiline);
 
-        public IEnumerable<TermPoint> Parse(string page)
+        public IEnumerable<ParsedTermPoint> Parse(string page)
         {
             var matches = this.regex.Matches(page);
 
@@ -26,9 +26,9 @@ namespace _4devAgendaParser.Parsers
                 (matches.Cast<Match>()
                     .Select(
                         match =>
-                        new TermPoint
+                        new ParsedTermPoint
                             {
-                                Track = new Track { TrackId = Int32.Parse(match.Groups["TrackId"].Value) },
+                                TrackId = Int32.Parse(match.Groups["TrackId"].Value),
                                 Title = HttpUtility.HtmlDecode(match.Groups["Title"].Value),
                                 Speaker = match.Groups["Speaker"].Value
                             })).ToList();
