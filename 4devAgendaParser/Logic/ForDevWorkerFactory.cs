@@ -1,5 +1,6 @@
 namespace _4devAgendaParser.Logic
 {
+    using _4devAgendaParser.Formatters;
     using _4devAgendaParser.Parsers;
 
     /// <summary>
@@ -17,7 +18,7 @@ namespace _4devAgendaParser.Logic
                 new TermTimeParser(),
                 new TermPointParser(),
                 new TrackAssembler(),
-                new SimpleTextTermPointFormatter());
+                new HtmlTermPointFormatter());
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace _4devAgendaParser.Logic
+namespace _4devAgendaParser.Formatters
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -8,12 +8,11 @@ namespace _4devAgendaParser.Logic
 
     public class SimpleTextTermPointFormatter : ITermPointFormatter
     {
-        public string Format(IEnumerable<TermPoint> termPoints)
+        public string Format(IList<TermPoint> termPoints, IList<TermTime> termTimes, IList<Track> tracks)
         {
             var stringBuilder = new StringBuilder();
 
-            var groupped =
-                termPoints.GroupBy(p => p.Track.Caption);
+            var groupped = termPoints.GroupBy(p => p.Track.Caption);
 
             foreach (var group in groupped)
             {
