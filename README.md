@@ -17,4 +17,4 @@ Jak można się przekonać patrząc na źródło strony agendy, nie ma potrzeby 
 * alternatywnie wygenerować stronę html zawierającą tabelę zawierającą w kolumnach wszystkie ścieżki konferencji, a w wierszach wszystkie godziny.
 
 ## Wynik
-* [Agenda 4developers 2015 w jednej tabeli](Agenda.html)
+* [Agenda 4developers 2015 w jednej tabeli](https://cdn.rawgit.com/GrzesiekGdn/4devAgendaParser/master/Agenda.html)
