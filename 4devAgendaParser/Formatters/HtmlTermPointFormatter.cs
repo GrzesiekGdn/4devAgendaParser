@@ -33,7 +33,7 @@ namespace _4devAgendaParser.Formatters
             builder.AppendLine("<head>");
             builder.AppendLine("<meta charset=\"UTF-8\">");
             builder.AppendLine("<title>Agenda 4developers 2015</title>");
-            
+
             builder.AppendLine("<style>");
             builder.AppendLine("table {border-collapse: collapse;}");
             builder.AppendLine("table, th, td {border: 1px solid lightgray;padding: 5px;}");
@@ -58,7 +58,7 @@ namespace _4devAgendaParser.Formatters
             IEnumerable<TermTime> termTimes,
             IList<Track> tracks)
         {
-            builder.AppendLine("<table>");            
+            builder.AppendLine("<table>");
             this.AppendTableHeaders(builder, tracks);
             builder.AppendLine("<tbody>");
 
@@ -69,7 +69,7 @@ namespace _4devAgendaParser.Formatters
             }
 
             builder.AppendLine("</tbody>");
-            builder.AppendLine("</table>"); 
+            builder.AppendLine("</table>");
         }
 
         private void AppendTableHeaders(StringBuilder builder, IEnumerable<Track> tracks)
@@ -103,9 +103,12 @@ namespace _4devAgendaParser.Formatters
                 if (currentPoint != null)
                 {
                     var currentTitle = currentPoint.Title;
-                    var currentLink = this.baseAddress + currentPoint.TitleLink;
 
-                    builder.AppendFormat("<th><a href=\"{1}\">{0}</a></th>\n", currentTitle, currentLink);
+                    var currentLink = currentPoint.TitleLink.StartsWith("http")
+                                          ? currentPoint.TitleLink
+                                          : this.baseAddress + currentPoint.TitleLink;
+
+                    builder.AppendFormat("<th><a href=\"{0}\">{1}</a></th>\n", currentLink, currentTitle);
                 }
                 else
                 {

@@ -15,3 +15,6 @@ Jak można się przekonać patrząc na źródło strony agendy, nie ma potrzeby 
 * sparsować go przy użyciu wyrażeń regularnych, a następnie wygenerowanie xml-a ze wszystkim kolumnami, który być może będzie można łatwo zaimportować do Excela,
 
 * alternatywnie wygenerować stronę html zawierającą tabelę zawierającą w kolumnach wszystkie ścieżki konferencji, a w wierszach wszystkie godziny.
+
+## Wynik
+* [Agenda 4developers 2015 w jednej tabeli](Agenda.html)

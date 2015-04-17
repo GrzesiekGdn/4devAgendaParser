@@ -64,7 +64,7 @@ namespace _4devAgendaParser.Logic
             var assembled = this.trackAssembler.Assembly(termPoints, termTimes, tracks).ToList();
             
             var formattedData = this.termPointFormatter.Format(assembled, termTimes, tracks);
-            File.WriteAllText("Output.html", formattedData);
+            File.WriteAllText("Agenda.html", formattedData);
 
             Console.WriteLine("\nAssembled and formatted by {0} miliseconds", stopwatch.ElapsedMilliseconds);
         }
